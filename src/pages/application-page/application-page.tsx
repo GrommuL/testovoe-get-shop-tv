@@ -1,11 +1,14 @@
 import { useState, FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/button'
 import { Checkbox } from '@/components/checkbox'
 import { InfoSidebar } from '@/components/info-sidebar'
 import { Input } from '@/components/input'
 import { Keyboard } from '@/components/keyboard'
+import { RoutesPath } from '@/config/routes-config'
 
 const ApplicationPage = () => {
+  const navigate = useNavigate()
   const [telValue, setTelValue] = useState('')
   const [checked, setChecked] = useState(false)
 
@@ -14,9 +17,10 @@ const ApplicationPage = () => {
     const applicationDataFromForm = new FormData(event.currentTarget)
     const application = {
       telephone: applicationDataFromForm.get('telephone'),
-      acceptPersonal: Boolean(applicationDataFromForm.get('active'))
+      acceptPersonalInformationTerms: Boolean(applicationDataFromForm.get('active'))
     }
     console.log(application)
+    navigate(RoutesPath.application_success)
   }
 
   return (
