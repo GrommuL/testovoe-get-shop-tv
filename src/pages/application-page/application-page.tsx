@@ -1,27 +1,12 @@
-import { useState, FormEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/button'
 import { Checkbox } from '@/components/checkbox'
 import { InfoSidebar } from '@/components/info-sidebar'
 import { Input } from '@/components/input'
 import { Keyboard } from '@/components/keyboard'
-import { RoutesPath } from '@/config/routes-config'
+import { useApplication } from '@/hooks/use-application'
 
 const ApplicationPage = () => {
-  const navigate = useNavigate()
-  const [telValue, setTelValue] = useState('')
-  const [checked, setChecked] = useState(false)
-
-  const applicationSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const applicationDataFromForm = new FormData(event.currentTarget)
-    const application = {
-      telephone: applicationDataFromForm.get('telephone'),
-      acceptPersonalInformationTerms: Boolean(applicationDataFromForm.get('active'))
-    }
-    console.log(application)
-    navigate(RoutesPath.application_success)
-  }
+  const { applicationSubmit, checked, setChecked, setTelValue, telValue } = useApplication()
 
   return (
     <main className='h-full'>
