@@ -6,12 +6,16 @@ export default {
       colors: {
         white: '#FFFFFF',
         black: '#000000',
-        blue: '#86D3F4'
+        blue: '#86D3F4',
+        grey: '#4E4E4E'
       }
     },
     backgroundImage: {
       qr: 'url("/src/assets/images/qr.png")',
       main: 'url("/src/assets/images/bg-main.jpg")'
+    },
+    content: {
+      check: 'url("/src/assets/images/check.svg")'
     }
   },
   plugins: []
