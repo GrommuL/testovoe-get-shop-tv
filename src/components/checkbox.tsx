@@ -17,6 +17,7 @@ export const Checkbox: FC<Props> = ({
   ...otherProps
 }) => {
   const checkboxOnKeyDownEnter = (event: KeyboardEvent<HTMLInputElement>) => {
+    event.preventDefault()
     if (event.key === 'Enter') setChecked((prev) => !prev)
   }
 
