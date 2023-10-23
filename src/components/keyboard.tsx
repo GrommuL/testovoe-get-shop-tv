@@ -1,22 +1,13 @@
-import { Dispatch, FC } from 'react'
+import { FC } from 'react'
 import { Button } from './button'
 
 interface Props {
-  telValue: string
-  setTelValue: Dispatch<React.SetStateAction<string>>
+  keyboardKeyHandler: (keyValue: string) => void
 }
 
-export const Keyboard: FC<Props> = ({ telValue, setTelValue }) => {
+export const Keyboard: FC<Props> = ({ keyboardKeyHandler }) => {
   const keyboardNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-  const keyboardKeyHandler = (keyValue: string) => {
-    if (keyValue === 'delete') {
-      setTelValue((prev) => prev.slice(0, -1))
-    }
-    if (telValue.length < 10 && keyValue !== 'delete') {
-      setTelValue((prev) => prev + keyValue)
-    }
-  }
   return (
     <div className='grid grid-cols-3 gap-[10px]'>
       {keyboardNumbers.map((keyboardNumber, index) => (
